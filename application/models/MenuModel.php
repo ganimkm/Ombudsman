@@ -7,6 +7,7 @@ Class MenuModel extends CI_Model {
 
         $this->db->select('mm.menu_id,mm.menu_parent_id,mm.menu_name,mm.page_link,mm.menu_icon,mm.sort_order');
         $this->db->from('menu_master mm');
+        $this->db->where('mm.is_active', '1');
         $this->db->order_by('mm.menu_parent_id ASC,mm.sort_order ASC');
        
         $query = $this->db->get();

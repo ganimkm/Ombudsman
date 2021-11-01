@@ -16,7 +16,8 @@
                 <div class="panel panel-default">
                     
                     <div class="panel-heading">                                
-                        <h3 class="panel-title"><strong>Item Stock</strong></h3>                              
+                        <h3 class="panel-title"><strong>Item Stock</strong></h3>  
+                        <a  href="<?php echo site_url("stock/general/item/"); ?>/add" class="btn btn-success btn-rounded pull-right"><span class="fa fa-plus"></span>Add a new Item</a>                                                          
                     </div>
                     
                     <div class="panel-body">
@@ -41,13 +42,19 @@
                                         echo '<td>'.$row['item_stock'].'</td>';
                                         echo '<td>'.$row['reorder_level'].'</td>';
                                         echo '<td>
-
+                                       
                                         <a href="'.site_url("stock/entry").'/inward/'.$row['item_id'].'" class="btn btn-primary btn-rounded btn-xs"><span class="fa fa fa-plus"></span>Item Inward</a>  
-                                        <a href="'.site_url("stock/entry").'/issue/'.$row['item_id'].'" class="btn btn-danger btn-rounded btn-xs"><span class="fa fa fa-minus"></span>Item Issue</a>  
+                                        
+                                        <a href="'.site_url("stock/general").'/item/update/'.$row['item_id'].'" class="btn btn-warning btn-rounded btn-xs"><span class="fa fa-pencil"></span>Edit</a>  
+                                        <a href="'.site_url("stock/general").'/item/delete/'.$row['item_id'].'" class="btn btn-info btn-rounded btn-xs" onclick="return confirmDialog();"><span class="fa fa-times"></span>Delete</a>
+
                                         </td>';
                                         echo '</tr>';
                                     }
-                                ?>        
+                                ?>   
+                                
+                                <!-- <a href="'.site_url("stock/entry").'/issue/'.$row['item_id'].'" class="btn btn-danger btn-rounded btn-xs"><span class="fa fa fa-minus"></span>Item Issue</a>
+                                 -->
                             </tbody>
                             
                         </table>
