@@ -75,17 +75,17 @@
                     <div class="panel panel-default tabs">  
 
                         <ul class="nav nav-tabs" role="tablist">  
-                            <li class="active"><a href="#calldetails" role="tab" data-toggle="tab">Details</a></li>    
+                            <li class="active"><a href="#stockregisters" role="tab" data-toggle="tab">Details</a></li>    
                             <!--<li><a href="#callsummary" role="tab" data-toggle="tab">Summary</a></li>-->
                         </ul>
 
                         <div class="panel-body tab-content">
 
-                            <div class="tab-pane active" id="calldetails">
+                            <div class="tab-pane active" id="stockregisters">
 
                                 <div class="row">
 
-                                        <table id="stocktable" class="table table-bordered calldetailsdata"  cellspacing="0" width="100%">
+                                        <table id="stocktable" class="table table-bordered stockregistersdata"  cellspacing="0" width="100%">
 
                                             <thead>  
 
