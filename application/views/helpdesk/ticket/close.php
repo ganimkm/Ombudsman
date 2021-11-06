@@ -89,15 +89,15 @@
 
                                     <div class="form-group">
                                         <label class="col-md-3 col-xs-12 control-label">Asset Change Description</label>
-                                        <div class="col-md-4 col-xs-12">
+                                        <div class="col-md-6 col-xs-12">
                                             <label class="radio-inline">
                                                 <input type="radio" id="yescheck" class="iradio"  name="asset_change_description" value="1" <?=set_radio('asset_change_description', 1)?> />Yes
                                             </label>
                                             <label class="radio-inline">
                                                 <input type="radio"  id="nocheck" class="iradio"  name="asset_change_description" value="0" <?=set_radio('asset_change_description', 0)?> />No
-                                            </label>
-                                            <span class="help-block">Required</span>
-                                        </div>                                         
+                                            </label>                                            
+                                            <span class="help-block">Required - This option is for chennai engineers only</span>
+                                        </div>                                        
                                     </div>
     
                                     <div id="groupissue">
