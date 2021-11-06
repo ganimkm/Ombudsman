@@ -29,6 +29,8 @@
             $to_date=@date('Y-m-d', @strtotime($this->input->post('to_date')));
             $item_id = $this->input->post('stock_item');
 
+            $data['stock_single_item'] = $this->ItemModel->get_item($item_id);
+
         }
      
         $data['stock_item'] = $this->ItemModel->get_item();

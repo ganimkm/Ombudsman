@@ -17,7 +17,7 @@
         <li><a href="<?php echo base_url() ?>">Home</a></li>
         <li><a href="#"><?php echo ucfirst($this->uri->segment(1));?></a></li>
         <li><a href="#"><?php echo ucfirst($this->uri->segment(2));?></a></li>
-        <li class="active">Call Report</li>
+        <li class="active">Stock Register</li>
     </ul>
     <!-- END BREADCRUMB -->
     
@@ -47,7 +47,7 @@
 
                         <div class="form-group">
                             <select id="stock_item" name="stock_item" class="form-control select">
-                            <?php if ($stock) { echo '<option value="' . $stock[0]['item_id'] . '">' . $stock[0]['item_name'] . '</option>'; } ?>
+                            <?php if ($stock_single_item) { echo '<option value="' . $stock[0]['item_id'] . '">' . $stock[0]['item_name'] . '</option>'; } ?>
                                 <option value="ALL">ALL</option>
                                 <?php foreach($stock_item as $row) { echo '<option value="' . $row['item_id'] . '">' . $row['item_name'] . '</option>'; } ?>
                             </select>       
@@ -85,7 +85,7 @@
 
                                 <div class="row">
 
-                                        <table id="calltable" class="table table-bordered calldetailsdata"  cellspacing="0" width="100%">
+                                        <table id="stocktable" class="table table-bordered calldetailsdata"  cellspacing="0" width="100%">
 
                                             <thead>  
 
@@ -250,7 +250,7 @@
        }
        
  $(document).ready(function() {
-        $('#calltable').DataTable({
+        $('#stocktable').DataTable({
             "pageLength": 50,
             dom: 'Bfrtip',
             buttons: [{
@@ -263,7 +263,7 @@
 
         function exportexcel() { 
             
-            $("#calltable").table2excel({  
+            $("#stocktable").table2excel({  
                 name: "Table2Excel",  
                 filename: "callreport",  
                 fileext: ".xls"  
