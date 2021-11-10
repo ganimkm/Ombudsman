@@ -10,6 +10,7 @@
         parent::__construct();
 
         $this->load->model('stock/analytics/StockAnalyticsModel');
+        $this->load->model('stock/entry/StockModel');
         $this->load->model('stock/general/ItemModel');
 
     }
@@ -38,11 +39,25 @@
         
         $data['from_date']=$from_date;
         $data['to_date']=$to_date;
+
+        $data['page_title']='Stock Register';
                 
         $this->layouts->view('home',array('sidebar'=> 'layouts/sidebar','main'=> 'stock/analytics/stockregister'),$data);
             
     }
     
 
+    public function stockreport()
+    {
+        
+        $data = $this->data;     
+        
+        $data['stock'] = $this->StockModel->get_current_stock();
+     
+        $data['page_title']='Stock Report';
+
+        $this->layouts->view('home',array('sidebar'=> 'layouts/sidebar','main'=> 'stock/analytics/stockreport'),$data);
+            
+    }
     
 }

@@ -39,7 +39,7 @@ Class StockAnalyticsModel extends CI_Model {
             inner join department_master dm on inh.department_id=dm.department_id
             inner join user_master um1 on inh.user_id = um1.user_id
             inner join user_master um2 on inh.resolved_by = um2.user_id
-            where isr.item_qty < 0) vt where date(vt.date_on) > '". $fromdate ."'
+            where isr.item_qty < 0) vt where date(vt.date_on) > '". $fromdate ."' and date(vt.date_on) < '". $todate ."'
             
             union all
             

@@ -143,14 +143,18 @@
 
                                                                 $open_qty=$row['item_qty'];
 
-                                                                echo '<td colspan=3 style="text-align: center; font-weight:bold;vertical-align: middle;">Opening Balance</td>';
+                                                                echo '<td style="text-align: center; font-weight:bold;vertical-align: middle;">Opening Balance</td>';
+                                                                echo '<td>&nbsp;</td>';
+                                                                echo '<td>&nbsp;</td>';
                                                                 echo '<td style="text-align: center; font-weight:bold;vertical-align: middle;">'.$open_qty.'</td>';
 
                                                             }else if($row['stock_type'] == 'CLOSE'){
 
                                                                 $close_qty=$row['item_qty'];
 
-                                                                echo '<td colspan=3 style="text-align: center; font-weight:bold;vertical-align: middle;">Closing Balance</td>';
+                                                                echo '<td style="text-align: center; font-weight:bold;vertical-align: middle;">Closing Balance</td>';
+                                                                echo '<td>&nbsp;</td>';
+                                                                echo '<td>&nbsp;</td>';
                                                                 echo '<td style="text-align: center; font-weight:bold;vertical-align: middle;">'.$close_qty.'</td>';
 
                                                             }else if($row['stock_type'] == 'INWARD'){
@@ -206,8 +210,31 @@
                                                         <td style="vertical-align: middle;"><?php echo $row['actual_description'] ?></td>
                                                         <td style="vertical-align: middle;"><?php echo $row['engineer_name'] ?></td>
                                                         <td style="vertical-align: middle;"><?php echo $row['resolved_description'] ?></td>
+
+                                                        </tr>
                                                 <?php  
-                                                
+                                                             
+                                                    if($row['stock_type'] == 'CLOSE'){
+
+                                                        echo '<tr>';
+                                                            echo '<td>&nbsp;</td>';
+                                                            echo '<td>&nbsp;</td>';
+                                                            echo '<td>&nbsp;</td>';
+                                                            echo '<td>&nbsp;</td>';
+                                                            echo '<td>&nbsp;</td>';
+                                                            echo '<td>&nbsp;</td>';
+                                                            echo '<td>&nbsp;</td>';
+                                                            echo '<td>&nbsp;</td>';
+                                                            echo '<td>&nbsp;</td>';
+                                                            echo '<td>&nbsp;</td>';
+                                                            echo '<td>&nbsp;</td>';
+                                                            echo '<td>&nbsp;</td>';
+                                                            echo '<td>&nbsp;</td>';
+                                                            echo '<td>&nbsp;</td>';
+                                                        echo '</tr>';
+
+                                                    }
+
                                                     $item_id=$row['item_id'];
 
                                                     }
@@ -235,41 +262,33 @@
     <!-- END PAGE CONTENT WRAPPER --> 
     
     <script type="text/javascript">
+            
+        function ValidateEndDate() {
+            
+            var fromdate = $("#from_date").val();
+            var todate = $("#to_date").val();
+            
+            if (fromdate != '' && todate !='') {
+                if (Date.parse(fromdate) > Date.parse(todate)) {
+                    alert("From date should not be greater than to date");
+                    return false;
+                }
+            }          
+        }
         
-    function ValidateEndDate() {
-        
-           var fromdate = $("#from_date").val();
-           var todate = $("#to_date").val();
-           
-           if (fromdate != '' && todate !='') {
-               if (Date.parse(fromdate) > Date.parse(todate)) {
-                   alert("From date should not be greater than to date");
-                   return false;
-               }
-           }          
-       }
-       
- $(document).ready(function() {
-        $('#stocktable').DataTable({
-            "pageLength": 50,
-            dom: 'Bfrtip',
-            buttons: [{
-                extend: 'pdf',
-                orientation: 'landscape',
-                pageSize: 'LEGAL'
-            },'copy','csv','excel','print']
+        $(document).ready(function() {
+            $('#stocktable').DataTable({
+                "pageLength": 200,
+                "ordering": false,
+                dom: 'Bfrtip',
+                buttons: [{
+                    extend: 'pdf',
+                    orientation: 'landscape',
+                    pageSize: 'LEGAL'
+                },'copy','csv','excel','print']
+            });
         });
-    });
 
-        function exportexcel() { 
-            
-            $("#stocktable").table2excel({  
-                name: "Table2Excel",  
-                filename: "callreport",  
-                fileext: ".xls"  
-            });  
-            
-        }  
 
     </script>
 
